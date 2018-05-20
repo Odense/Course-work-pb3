@@ -15,6 +15,4 @@ class TEST_CURSACH_API UFuelBonusComponent : public UBonusComponent
 	GENERATED_BODY()
 
 	virtual void GiveEffect(ATest_cursachPawn * Pawn) override;
-	
-	
 };

@@ -168,7 +168,7 @@ public:
 	float Fuel;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Cursach")
-	float FuelLostCoef = 0.7f;
+	float FuelLostCoef = 0.97f;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Cursach|Sound")
 	float TimeBetweenHitSounds = 2.0f;
@@ -180,6 +180,9 @@ private:
 
 	/// Bonus Interface
 public:
-	UFUNCTION(BlueprintCallable, Category = "HuyVZhope")
+	UFUNCTION(BlueprintCallable, Category = "Coursach|Bonuse")
 	void AddFuel(float AddedValue);
+
+	UFUNCTION(BlueprintCallable, Category = "Coursach|Bonuse")
+	void AddHP(float AddedValue);
 };

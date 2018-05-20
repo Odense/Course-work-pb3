@@ -147,6 +147,12 @@ void ATest_cursachPawn::MoveForward(float Val)
 		GetVehicleMovementComponent()->SetThrottleInput(0);
 		return;
 	}
+
+	if (HP <= 0)
+	{
+		GetVehicleMovementComponent()->SetThrottleInput(0);
+		return;
+	}
 	//*
 
 	GetVehicleMovementComponent()->SetThrottleInput(Val);
@@ -154,8 +160,7 @@ void ATest_cursachPawn::MoveForward(float Val)
 	//*
 	Val = FMath::Abs(Val);
 
-	///TODO: HUY
-	Fuel -= Val * FuelLostCoef;
+	Fuel -= (Val * FuelLostCoef * 5.0f);
 	//*
 }
 
@@ -341,7 +346,7 @@ float ATest_cursachPawn::TakeDamage(float Damage, struct FDamageEvent const& Dam
 {
 	Super::TakeDamage(Damage, DamageEvent, EventInstigator, DamageCauser);
 
-	HP -= Damage;
+	HP -= (Damage * 6.0f);
 
 	//UE_LOG(LogTemp, Warning, TEXT("%f %f"), Damage, HP);
 
@@ -352,4 +357,9 @@ float ATest_cursachPawn::TakeDamage(float Damage, struct FDamageEvent const& Dam
 void ATest_cursachPawn::AddFuel(float AddedValue)
 {
 	Fuel += AddedValue;
+}
+
+void ATest_cursachPawn::AddHP(float AddedValue)
+{
+	HP += AddedValue;
 }

@@ -5,7 +5,7 @@
 
 void UFuelBonusComponent::GiveEffect(ATest_cursachPawn * Pawn)
 {
-	Pawn->AddFuel(5.0f);
+	Pawn->AddFuel(10.0f);
 }
 
 
