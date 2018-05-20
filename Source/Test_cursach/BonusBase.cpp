@@ -3,6 +3,7 @@
 #include "BonusBase.h"
 #include "Components/StaticMeshComponent.h"
 #include "FuelBonusComponent.h"
+#include "Test_cursachPawn.h"
 
 
 // Sets default values
@@ -29,15 +30,31 @@ void ABonusBase::BeginPlay()
 	//*
 
 	//BonusComponent = N<BonusTemplate>(TEXT("Bonus Component"));
-	//BonusComponent = NewObject<UBonusComponent>(this, BonusTemplate->StaticClass());
-	BonusComponent = NewObject<UBonusComponent>(this, UFuelBonusComponent::StaticClass());
+	BonusComponent = NewObject<UBonusComponent>(this, BonusTemplate.Get());
+	//BonusComponent = NewObject<UBonusComponent>(this, UFuelBonusComponent::StaticClass());
 
+
+	//CapsuleComponent->OnComponentBeginOverlap.AddDynamic(this, &AYourClass::YourFunction)
+	this->OnActorBeginOverlap.AddDynamic(this, &ABonusBase::Overlape);
 }
 
 // Called every frame
 void ABonusBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	FRotator rot = GetActorRotation();
+	rot.Yaw += 220 * DeltaTime;
+	SetActorRotation(rot);
 }
 
+void ABonusBase::Overlape(AActor * me, AActor * Other)
+{
+	if (ATest_cursachPawn * mashinka = Cast<ATest_cursachPawn>(Other))
+	{
+		BonusComponent->GiveEffect(mashinka);
+
+		Destroy();
+	}
+}
 

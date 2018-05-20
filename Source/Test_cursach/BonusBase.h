@@ -20,6 +20,8 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -32,9 +34,11 @@ public:
 
 	//BonusInterface
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Cursach")
-	TSubclassOf<UBonusComponent>  BonusTemplate;
+	TAssetSubclassOf<UBonusComponent>  BonusTemplate;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UBonusComponent * BonusComponent;
 
+	UFUNCTION()
+	void Overlape(AActor * me, AActor * Other);
 };

@@ -258,6 +258,7 @@ void ATest_cursachPawn::BeginPlay()
 	Fuel = maxFuelAmount;
 	LastSoundHitTime = -5.0f;
 	//*
+
 }
 
 void ATest_cursachPawn::OnResetVR()

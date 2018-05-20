@@ -173,6 +173,7 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Cursach|Sound")
 	float TimeBetweenHitSounds = 2.0f;
 
+
 private:
 	float LastSoundHitTime;
 
